@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Исходные файлы">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Файлы заголовков">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Файлы ресурсов">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Файлы заголовков\Painter">
+      <UniqueIdentifier>{0c7d4dc9-1f04-43a4-a310-22c2317bf06e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Painter">
+      <UniqueIdentifier>{77953bc6-7550-4392-b67f-5969a6a15173}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Main.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="MainWindow.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="RoundLightBulb.cpp">
+      <Filter>Исходные файлы\Painter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Service\RGBColor.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="Painter.cpp">
+      <Filter>Исходные файлы\Painter</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="MainWindow.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="AbstractLightBulb.h">
+      <Filter>Файлы заголовков\Painter</Filter>
+    </ClInclude>
+    <ClInclude Include="RoundLightBulb.h">
+      <Filter>Файлы заголовков\Painter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Service\RGBColor.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Painter.h">
+      <Filter>Файлы заголовков\Painter</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

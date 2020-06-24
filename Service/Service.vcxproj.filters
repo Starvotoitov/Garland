@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Исходные файлы">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Файлы заголовков">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Файлы ресурсов">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Файлы заголовков\ColorGenerator">
+      <UniqueIdentifier>{d70050f8-336e-46bd-98b3-dbff9aee31a1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\ColorGenerator">
+      <UniqueIdentifier>{c03a43d5-4718-4096-9267-703a7b585d09}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Queue">
+      <UniqueIdentifier>{1d0f08ed-e120-46a1-bb9c-969f1ec1a0bc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Server">
+      <UniqueIdentifier>{c9ef2d8f-7281-4d6c-ab83-0e3d2c30119f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Server">
+      <UniqueIdentifier>{2312c4ac-f6aa-4a8e-a161-196ea1017a86}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Main.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="GarlandService.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="RandomColorGenerator.cpp">
+      <Filter>Исходные файлы\ColorGenerator</Filter>
+    </ClCompile>
+    <ClCompile Include="RGBColor.cpp">
+      <Filter>Исходные файлы\ColorGenerator</Filter>
+    </ClCompile>
+    <ClCompile Include="ColorGenerator.cpp">
+      <Filter>Исходные файлы\ColorGenerator</Filter>
+    </ClCompile>
+    <ClCompile Include="Garland.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="AbstractServer.cpp">
+      <Filter>Исходные файлы\Server</Filter>
+    </ClCompile>
+    <ClCompile Include="PipeServer.cpp">
+      <Filter>Исходные файлы\Server</Filter>
+    </ClCompile>
+    <ClCompile Include="PipeConnection.cpp">
+      <Filter>Исходные файлы\Server</Filter>
+    </ClCompile>
+    <ClCompile Include="Message.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="GarlandService.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="AbstractColorGenerator.h">
+      <Filter>Файлы заголовков\ColorGenerator</Filter>
+    </ClInclude>
+    <ClInclude Include="RandomColorGenerator.h">
+      <Filter>Файлы заголовков\ColorGenerator</Filter>
+    </ClInclude>
+    <ClInclude Include="RGBColor.h">
+      <Filter>Файлы заголовков\ColorGenerator</Filter>
+    </ClInclude>
+    <ClInclude Include="ColorGenerator.h">
+      <Filter>Файлы заголовков\ColorGenerator</Filter>
+    </ClInclude>
+    <ClInclude Include="AbstractQueue.h">
+      <Filter>Файлы заголовков\Queue</Filter>
+    </ClInclude>
+    <ClInclude Include="ThreadSafeQueue.h">
+      <Filter>Файлы заголовков\Queue</Filter>
+    </ClInclude>
+    <ClInclude Include="Garland.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="AbstractServer.h">
+      <Filter>Файлы заголовков\Server</Filter>
+    </ClInclude>
+    <ClInclude Include="PipeServer.h">
+      <Filter>Файлы заголовков\Server</Filter>
+    </ClInclude>
+    <ClInclude Include="AbstractConnection.h">
+      <Filter>Файлы заголовков\Server</Filter>
+    </ClInclude>
+    <ClInclude Include="PipeConnection.h">
+      <Filter>Файлы заголовков\Server</Filter>
+    </ClInclude>
+    <ClInclude Include="Message.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
