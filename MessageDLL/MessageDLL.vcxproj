@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -20,13 +20,13 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
-    <ProjectGuid>{080227DA-2B19-4D97-8E86-2AA1B7803BB1}</ProjectGuid>
-    <RootNamespace>Client</RootNamespace>
+    <ProjectGuid>{44F83E8B-B852-4EB5-82E5-77BE9C0C1848}</ProjectGuid>
+    <RootNamespace>MessageDLL</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
@@ -90,7 +90,7 @@
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
@@ -139,32 +139,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="ClientApplication.cpp" />
-    <ClCompile Include="ClientConnection.cpp" />
-    <ClCompile Include="LightOutMessageHandler.cpp" />
-    <ClCompile Include="LightUpMessageHandler.cpp" />
-    <ClCompile Include="Main.cpp" />
-    <ClCompile Include="MainWindow.cpp" />
-    <ClCompile Include="MessageController.cpp" />
-    <ClCompile Include="Painter.cpp" />
-    <ClCompile Include="PipeConnection.cpp" />
-    <ClCompile Include="RoundLightBulb.cpp" />
+    <ClInclude Include="Message.h" />
+    <ClInclude Include="RGBColor.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="AbstractConnection.h" />
-    <ClInclude Include="AbstractLightBulb.h" />
-    <ClInclude Include="AbstractMessageHandler.h" />
-    <ClInclude Include="ClientApplication.h" />
-    <ClInclude Include="ClientConnection.h" />
-    <ClInclude Include="ConnectionSubscriber.h" />
-    <ClInclude Include="LightOutMessageHandler.h" />
-    <ClInclude Include="LightUpMessageHandler.h" />
-    <ClInclude Include="MainWindow.h" />
-    <ClInclude Include="MessageController.h" />
-    <ClInclude Include="MessageSubscriber.h" />
-    <ClInclude Include="Painter.h" />
-    <ClInclude Include="PipeConnection.h" />
-    <ClInclude Include="RoundLightBulb.h" />
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Message.cpp" />
+    <ClCompile Include="RGBColor.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

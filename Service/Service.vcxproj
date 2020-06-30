@@ -143,11 +143,9 @@
     <ClCompile Include="Garland.cpp" />
     <ClCompile Include="GarlandService.cpp" />
     <ClCompile Include="Main.cpp" />
-    <ClCompile Include="Message.cpp" />
     <ClCompile Include="PipeConnection.cpp" />
     <ClCompile Include="PipeServer.cpp" />
     <ClCompile Include="RandomColorGenerator.cpp" />
-    <ClCompile Include="RGBColor.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AbstractColorGenerator.h" />
@@ -157,11 +155,9 @@
     <ClInclude Include="ColorGenerator.h" />
     <ClInclude Include="Garland.h" />
     <ClInclude Include="GarlandService.h" />
-    <ClInclude Include="Message.h" />
     <ClInclude Include="PipeConnection.h" />
     <ClInclude Include="PipeServer.h" />
     <ClInclude Include="RandomColorGenerator.h" />
-    <ClInclude Include="RGBColor.h" />
     <ClInclude Include="ThreadSafeQueue.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

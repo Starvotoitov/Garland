@@ -2,7 +2,7 @@
 
 #include "AbstractConnection.h"
 #include "AbstractQueue.h"
-#include "RGBColor.h"
+#include "../MessageDLL/RGBColor.h"
 
 class AbstractServer {
 public:

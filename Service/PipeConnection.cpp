@@ -1,5 +1,5 @@
 #include "PipeConnection.h"
-#include "Message.h"
+#include "../MessageDLL/Message.h"
 
 PipeConnection::PipeConnection(HANDLE hPipe, OVERLAPPED overlap) :
 	hPipe(hPipe), overlap(overlap)
@@ -16,7 +16,6 @@ bool PipeConnection::sendLightUp(RGBColor* newColor) {
 	Message* lightUpMessage = new Message(newColor);
 	SetLastError(0);
 	WriteFile(hPipe, lightUpMessage, sizeof(Message), NULL, &overlap);
-	printf("--- Light Up: %d\n", GetLastError());
 	if (GetLastError() == 0) {
 		WaitForSingleObject(overlap.hEvent, INFINITE);
     	return false;
@@ -29,7 +28,6 @@ bool PipeConnection::sendLightOut() {
 	Message* lightOutMessage = new Message();
 	SetLastError(0);
 	WriteFile(hPipe, lightOutMessage, sizeof(Message), NULL, &overlap);
-	printf("--- Light Out: %d\n", GetLastError());
 	if (GetLastError() == 0) {
 		WaitForSingleObject(overlap.hEvent, INFINITE);
 		return false;

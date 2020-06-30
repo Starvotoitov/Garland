@@ -3,6 +3,7 @@
 SERVICE_STATUS GarlandService::serviceStatus;
 SERVICE_STATUS_HANDLE GarlandService::hStatusHandle;
 TCHAR* GarlandService::serviceName = nullptr;
+Garland GarlandService::garland;
 
 void GarlandService::start(TCHAR* serviceName) {
 	GarlandService::serviceName = serviceName;
@@ -27,6 +28,8 @@ void GarlandService::serviceMain(int argc, TCHAR** argv) {
 	
 	serviceStatus.dwCurrentState = SERVICE_RUNNING;
 	SetServiceStatus(hStatusHandle, &serviceStatus);
+
+	garland.start();
 }
 
 void GarlandService::serviceHandler(DWORD request) {
@@ -36,6 +39,7 @@ void GarlandService::serviceHandler(DWORD request) {
 		serviceStatus.dwWin32ExitCode = 0;
 		serviceStatus.dwCurrentState = SERVICE_STOPPED;
 		SetServiceStatus(hStatusHandle, &serviceStatus);
+		garland.interrupt();
 		break;
 	}
 }

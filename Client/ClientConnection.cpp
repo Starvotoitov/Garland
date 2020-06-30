@@ -2,7 +2,8 @@
 #include "PipeConnection.h"
 
 ClientConnection::ClientConnection(ConnectionSubscriber* subscriber) :
-	subscriber(subscriber), messageController(this), connection(new PipeConnection()), connectionThread(&ClientConnection::connectionThreadRoutine, this)
+	subscriber(subscriber), messageController(this), connection(new PipeConnection()), 
+	connectionThread(&ClientConnection::connectionThreadRoutine, this)
 {
 	connectionThread.detach();
 }
@@ -28,10 +29,6 @@ void ClientConnection::connectionThreadRoutine() {
 			subscriber->onConnectionClose();
 		}
 	} while(currentMessage != nullptr);
-}
-
-void ClientConnection::onSendEvent(HANDLE newEvent) {
-
 }
 
 void ClientConnection::onLightUp(RGBColor* newColor) {

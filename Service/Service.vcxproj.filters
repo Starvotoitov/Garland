@@ -39,9 +39,6 @@
     <ClCompile Include="RandomColorGenerator.cpp">
       <Filter>Исходные файлы\ColorGenerator</Filter>
     </ClCompile>
-    <ClCompile Include="RGBColor.cpp">
-      <Filter>Исходные файлы\ColorGenerator</Filter>
-    </ClCompile>
     <ClCompile Include="ColorGenerator.cpp">
       <Filter>Исходные файлы\ColorGenerator</Filter>
     </ClCompile>
@@ -54,9 +51,6 @@
     <ClCompile Include="PipeConnection.cpp">
       <Filter>Исходные файлы\Server</Filter>
     </ClCompile>
-    <ClCompile Include="Message.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GarlandService.h">
@@ -66,9 +60,6 @@
       <Filter>Файлы заголовков\ColorGenerator</Filter>
     </ClInclude>
     <ClInclude Include="RandomColorGenerator.h">
-      <Filter>Файлы заголовков\ColorGenerator</Filter>
-    </ClInclude>
-    <ClInclude Include="RGBColor.h">
       <Filter>Файлы заголовков\ColorGenerator</Filter>
     </ClInclude>
     <ClInclude Include="ColorGenerator.h">
@@ -94,9 +85,6 @@
     </ClInclude>
     <ClInclude Include="PipeConnection.h">
       <Filter>Файлы заголовков\Server</Filter>
-    </ClInclude>
-    <ClInclude Include="Message.h">
-      <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

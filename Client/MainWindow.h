@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Painter.h"
-#include "../Service/RGBColor.h"
+#include "../MessageDLL/RGBColor.h"
 #include <Windows.h>
 
 class MainWindow {
@@ -10,8 +10,8 @@ public:
 	MainWindow(HINSTANCE hInstance, TCHAR* windowName, int x, int y, int width, int height, int minWidth, int minHeight, int maxWidth, int maxHeight);
 	void lightUp(RGBColor* newColor);
 	void lightOut();
-	void showError(const TCHAR* message);
-	void showInfo(const TCHAR* message);
+	void handleConnectionCloseMessage();
+	void handleErrorMessage();
 private:
 	static bool isRegistered;
 	static const int DEFAULT_MIN_WIDTH;

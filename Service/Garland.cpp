@@ -20,7 +20,6 @@ void Garland::start()
 
 void Garland::interrupt()
 {
-	printf("Start Interrupt\n");
 	isRunning = false;
 	server->interrupt();
 	unique_lock<mutex> lock(serverMutex);
@@ -28,33 +27,27 @@ void Garland::interrupt()
 		server->chooseNextUser();
 		server->closeCurrentConnection();
 	}
-	printf("End Interrupt\n");
 }
 
 void Garland::garlandLogic()
 {
-	printf("Start Logic\n");
-	while (isRunning) {
+//	while (isRunning) {
 		server->waitForClient();
-		while (!server->isEmpty()) {
+//		while (!server->isEmpty()) {
+		while (isRunning) {
 			RGBColor* newColor = generator->generateColor();
-			printf("%d %d %d\n", newColor->red, newColor->green, newColor->blue);
 
 			Sleep(TIMEOUT);
 			bool isClosed = false;
 			do {
-				printf("Send lightUp\n");
 				server->chooseNextUser();
-			//	server->sendLightUp(newColor);
 				isClosed = server->sendLightUp(newColor);
 			} while (isClosed);
 
 			delete newColor;
 
 			Sleep(TIMEOUT);
-			printf("Send lightOut\n");
 			server->sendLightOut();
 		}
-	}
-	printf("End Logic\n");
+//	}
 }

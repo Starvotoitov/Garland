@@ -16,7 +16,6 @@ public:
 	virtual bool isEmpty();
 	virtual void waitForElement();
 	virtual T getNext();
-//	virtual T getCurrent();
 private:
 	typename list<T>::iterator currentElement;
 	list<T> queue;
@@ -73,21 +72,6 @@ T ThreadSafeQueue<T>::getNext() {
 	if (currentElement == queue.end()) {
 		currentElement = queue.begin();
 	}
-//	} else {
-//		currentElement++;
-//	}
 
 	return *currentElement; 
 }
-
-/*
-template<class T>
-T ThreadSafeQueue<T>::getCurrent() {
-	unique_lock<mutex> queueLock(queueMutex);
-	if (queue.empty()) {
-		queueConditionVariable.wait(queueLock);
-	}
-
-	return *currentElement;
-}
-*/

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../Service/Message.h"
+#include "../MessageDLL/Message.h"
 
 class AbstractConnection {
 public:

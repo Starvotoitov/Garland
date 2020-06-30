@@ -1,5 +1,5 @@
 #include "PipeServer.h"
-#include "Message.h"
+#include "../MessageDLL/Message.h"
 #include "PipeConnection.h"
 #include "ThreadSafeQueue.h"
 
@@ -42,7 +42,6 @@ bool PipeServer::sendLightOut() {
 }
 
 void PipeServer::listen() {
-	printf("Start listening\n");
 	while (isRunning) {
 		hPipeEvent = CreateEvent(NULL, true, false, NULL);
 		if (hPipeEvent == NULL) {
@@ -69,12 +68,10 @@ void PipeServer::listen() {
 		if (connectionStatus == ERROR_IO_PENDING || connectionStatus == ERROR_PIPE_CONNECTED) {
 			WaitForSingleObject(overlap.hEvent, INFINITE);
 			if (isRunning) {
-				printf("Connected\n");
 				queue->enqueue(new PipeConnection(hPipe, overlap));
 			}
 		}
 	}
-	printf("Stop listening\n");
 }
 
 void PipeServer::chooseNextUser() {
@@ -97,5 +94,4 @@ void PipeServer::interrupt() {
 void PipeServer::closeCurrentConnection() {
 	delete currentUser;
 	queue->dequeue();
-	printf("Disconnected\n");
 }

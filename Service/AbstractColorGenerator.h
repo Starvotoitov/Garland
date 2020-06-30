@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RGBColor.h"
+#include "../MessageDLL/RGBColor.h"
 
 class AbstractColorGenerator {
 public:

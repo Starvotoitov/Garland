@@ -48,9 +48,6 @@
     <ClCompile Include="RoundLightBulb.cpp">
       <Filter>Исходные файлы\Painter</Filter>
     </ClCompile>
-    <ClCompile Include="..\Service\RGBColor.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
     <ClCompile Include="Painter.cpp">
       <Filter>Исходные файлы\Painter</Filter>
     </ClCompile>
@@ -62,12 +59,6 @@
     </ClCompile>
     <ClCompile Include="MessageController.cpp">
       <Filter>Исходные файлы\MessageHandler</Filter>
-    </ClCompile>
-    <ClCompile Include="SendEventMessageHandler.cpp">
-      <Filter>Исходные файлы\MessageHandler\Handlers</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Service\Message.cpp">
-      <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="PipeConnection.cpp">
       <Filter>Исходные файлы\Connection</Filter>
@@ -89,9 +80,6 @@
     <ClInclude Include="RoundLightBulb.h">
       <Filter>Файлы заголовков\Painter</Filter>
     </ClInclude>
-    <ClInclude Include="..\Service\RGBColor.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
     <ClInclude Include="Painter.h">
       <Filter>Файлы заголовков\Painter</Filter>
     </ClInclude>
@@ -110,17 +98,11 @@
     <ClInclude Include="LightUpMessageHandler.h">
       <Filter>Файлы заголовков\MessageHandler\Handlers</Filter>
     </ClInclude>
-    <ClInclude Include="SendEventMessageHandler.h">
-      <Filter>Файлы заголовков\MessageHandler\Handlers</Filter>
-    </ClInclude>
     <ClInclude Include="AbstractConnection.h">
       <Filter>Файлы заголовков\Connection</Filter>
     </ClInclude>
     <ClInclude Include="PipeConnection.h">
       <Filter>Файлы заголовков\Connection</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Service\Message.h">
-      <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="ClientConnection.h">
       <Filter>Файлы заголовков\Connection</Filter>

@@ -2,6 +2,9 @@
 #include "AbstractLightBulb.h"
 #include "RoundLightBulb.h"
 
+#define WM_CONNECTION_CLOSE WM_USER + 1
+#define WM_CLIENT_ERROR WM_USER + 2
+
 bool MainWindow::isRegistered = false;
 const int MainWindow::DEFAULT_MIN_WIDTH = 300;
 const int MainWindow::DEFAULT_MIN_HEIGHT = 300;
@@ -61,12 +64,12 @@ void MainWindow::lightOut() {
 	InvalidateRect(hWnd, &windowRect, true);
 }
 
-void MainWindow::showError(const TCHAR* message) {
-	MessageBox(hWnd, message, TEXT("Error"), MB_OK | MB_ICONERROR);
+void MainWindow::handleConnectionCloseMessage() {
+	PostMessage(hWnd, WM_CONNECTION_CLOSE, NULL, NULL);
 }
 
-void MainWindow::showInfo(const TCHAR* message) {
-	MessageBox(hWnd, message, TEXT("Information"), MB_OK | MB_ICONINFORMATION);
+void MainWindow::handleErrorMessage() {
+	PostMessage(hWnd, WM_CLIENT_ERROR, NULL, NULL);
 }
 
 void MainWindow::registerWindowClass(HINSTANCE hInstance) {
@@ -135,6 +138,14 @@ LRESULT CALLBACK MainWindow::windowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPA
 		Painter::deinitializePainter();
 		PostQuitMessage(0);
 		break;
+	}
+	case WM_CONNECTION_CLOSE: {
+		MessageBox(hWnd, TEXT("Connection was closed"), TEXT("Information"), MB_OK | MB_ICONINFORMATION);
+		DestroyWindow(hWnd);
+	}
+	case WM_CLIENT_ERROR: {
+		MessageBox(hWnd, TEXT("Error"), TEXT("Error"), MB_OK | MB_ICONERROR);
+		DestroyWindow(hWnd);
 	}
 	}
 	return DefWindowProc(hWnd, uMsg, wParam, lParam);

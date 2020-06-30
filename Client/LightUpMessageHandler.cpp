@@ -5,7 +5,6 @@ void LightUpMessageHandler::ProcessMessage(Message* processingMessage, MessageSu
 		if (subscriber != nullptr) {
 			RGBColor color = get<RGBColor>(processingMessage->messageData);
 			subscriber->onLightUp(&color);
-		//	subscriber->onLightUp(&processingMessage->getColor());
 		}
 	}
 	catch (const bad_variant_access& ex) {

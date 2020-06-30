@@ -1,6 +1,8 @@
 #include "ClientApplication.h"
 #include <Windows.h>
 
+#pragma comment(lib, "MessageDLL")
+
 INT WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PWSTR lpCmdLine, INT nCmdShow) {
 	ClientApplication app(hInstance);
 	MSG message;

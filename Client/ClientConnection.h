@@ -11,11 +11,9 @@ class ClientConnection : public MessageSubscriber {
 public:
 	ClientConnection(ConnectionSubscriber* subscriber);
 	void closeConnection();
-	virtual void onSendEvent(HANDLE newEvent);
 	virtual void onLightUp(RGBColor* newColor);
 	virtual void onLightOut();
 	virtual void onError();
-//	virtual void onConnectionClose();
 private:
 	thread connectionThread;
 	ConnectionSubscriber* subscriber;

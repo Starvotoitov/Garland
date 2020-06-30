@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../Service/RGBColor.h"
+#include "../MessageDLL/RGBColor.h"
 #include <Windows.h>
 
 class AbstractLightBulb {

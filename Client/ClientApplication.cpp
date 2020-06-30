@@ -14,9 +14,9 @@ void ClientApplication::onLightOut() {
 }
 
 void ClientApplication::onError() {
-	window.showError(TEXT("Error"));
+	window.handleErrorMessage();
 }
 
 void ClientApplication::onConnectionClose() {
-	window.showInfo(TEXT("Info"));
+	window.handleConnectionCloseMessage();
 }

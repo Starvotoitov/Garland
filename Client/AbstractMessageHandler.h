@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../Service/Message.h"
+#include "../MessageDLL/Message.h"
 #include "MessageSubscriber.h"
 
 class AbstractMessageHandler {
