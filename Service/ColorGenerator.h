@@ -4,8 +4,8 @@
 
 class ColorGenerator {
 public:
-	ColorGenerator();
 	ColorGenerator(AbstractColorGenerator *newGenerator);
+	~ColorGenerator();
 	void setGenerator(AbstractColorGenerator *newGenerator);
 	RGBColor* generateColor();
 private:

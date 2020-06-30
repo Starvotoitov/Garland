@@ -1,0 +1,14 @@
+#include "LightUpMessageHandler.h" 
+
+void LightUpMessageHandler::ProcessMessage(Message* processingMessage, MessageSubscriber* subscriber) {
+	try {
+		if (subscriber != nullptr) {
+			RGBColor color = get<RGBColor>(processingMessage->messageData);
+			subscriber->onLightUp(&color);
+		//	subscriber->onLightUp(&processingMessage->getColor());
+		}
+	}
+	catch (const bad_variant_access& ex) {
+		subscriber->onError();
+	}
+}

@@ -2,7 +2,6 @@
 
 #include <tchar.h>
 #include <Windows.h>
-#include "ThreadSafeQueue.h"
 
 class GarlandService {
 public:

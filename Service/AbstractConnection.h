@@ -4,6 +4,6 @@
 
 class AbstractConnection {
 public:
-	virtual void sendLightUp(RGBColor* newColor) = 0;
-	virtual void sendLightOut() = 0;
+	virtual bool sendLightUp(RGBColor* newColor) = 0;
+	virtual bool sendLightOut() = 0;
 };

@@ -19,6 +19,24 @@
     <Filter Include="Исходные файлы\Painter">
       <UniqueIdentifier>{77953bc6-7550-4392-b67f-5969a6a15173}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Файлы заголовков\MessageHandler">
+      <UniqueIdentifier>{bbc34467-de04-4d2c-93ab-b99dee019799}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\MessageHandler\Handlers">
+      <UniqueIdentifier>{164fcbef-d7c7-46d4-946e-73439fb6fe18}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\MessageHandler">
+      <UniqueIdentifier>{a63280b6-07f9-4564-bf08-298fbce4dca7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\MessageHandler\Handlers">
+      <UniqueIdentifier>{1fb2cb45-7d50-4d0e-a30b-e1ecda6c0254}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Connection">
+      <UniqueIdentifier>{1cec4d72-9057-493f-a0f5-6aed9983ba86}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Connection">
+      <UniqueIdentifier>{1e78299c-d529-484d-9c13-af62ffbde39d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -36,6 +54,30 @@
     <ClCompile Include="Painter.cpp">
       <Filter>Исходные файлы\Painter</Filter>
     </ClCompile>
+    <ClCompile Include="LightUpMessageHandler.cpp">
+      <Filter>Исходные файлы\MessageHandler\Handlers</Filter>
+    </ClCompile>
+    <ClCompile Include="LightOutMessageHandler.cpp">
+      <Filter>Исходные файлы\MessageHandler\Handlers</Filter>
+    </ClCompile>
+    <ClCompile Include="MessageController.cpp">
+      <Filter>Исходные файлы\MessageHandler</Filter>
+    </ClCompile>
+    <ClCompile Include="SendEventMessageHandler.cpp">
+      <Filter>Исходные файлы\MessageHandler\Handlers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Service\Message.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="PipeConnection.cpp">
+      <Filter>Исходные файлы\Connection</Filter>
+    </ClCompile>
+    <ClCompile Include="ClientApplication.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="ClientConnection.cpp">
+      <Filter>Исходные файлы\Connection</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MainWindow.h">
@@ -52,6 +94,42 @@
     </ClInclude>
     <ClInclude Include="Painter.h">
       <Filter>Файлы заголовков\Painter</Filter>
+    </ClInclude>
+    <ClInclude Include="MessageController.h">
+      <Filter>Файлы заголовков\MessageHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="MessageSubscriber.h">
+      <Filter>Файлы заголовков\MessageHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="AbstractMessageHandler.h">
+      <Filter>Файлы заголовков\MessageHandler\Handlers</Filter>
+    </ClInclude>
+    <ClInclude Include="LightOutMessageHandler.h">
+      <Filter>Файлы заголовков\MessageHandler\Handlers</Filter>
+    </ClInclude>
+    <ClInclude Include="LightUpMessageHandler.h">
+      <Filter>Файлы заголовков\MessageHandler\Handlers</Filter>
+    </ClInclude>
+    <ClInclude Include="SendEventMessageHandler.h">
+      <Filter>Файлы заголовков\MessageHandler\Handlers</Filter>
+    </ClInclude>
+    <ClInclude Include="AbstractConnection.h">
+      <Filter>Файлы заголовков\Connection</Filter>
+    </ClInclude>
+    <ClInclude Include="PipeConnection.h">
+      <Filter>Файлы заголовков\Connection</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Service\Message.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="ClientConnection.h">
+      <Filter>Файлы заголовков\Connection</Filter>
+    </ClInclude>
+    <ClInclude Include="ConnectionSubscriber.h">
+      <Filter>Файлы заголовков\Connection</Filter>
+    </ClInclude>
+    <ClInclude Include="ClientApplication.h">
+      <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

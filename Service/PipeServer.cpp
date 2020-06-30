@@ -1,28 +1,48 @@
 #include "PipeServer.h"
 #include "Message.h"
 #include "PipeConnection.h"
+#include "ThreadSafeQueue.h"
 
 const TCHAR* PipeServer::PIPE_NAME = TEXT("\\\\.\\pipe\\GarlandPipe");
 const int PipeServer::TIMEOUT = 0;
 
 PipeServer::PipeServer():
-	isRunning(true)
+	isRunning(true), hPipeEvent(INVALID_HANDLE_VALUE), queue(new ThreadSafeQueue<AbstractConnection*>()), currentUser(nullptr)
 {
 }
 
-void PipeServer::sendLightUp(RGBColor* newColor) {
-	if (currentUser != nullptr) {
-		currentUser->sendLightUp(newColor);
-	}
+PipeServer::~PipeServer() {
+	delete queue;
 }
 
-void PipeServer::sendLightOut() {
+bool PipeServer::sendLightUp(RGBColor* newColor) {
+	bool isClosed = true;
 	if (currentUser != nullptr) {
-		currentUser->sendLightOut();
+		isClosed = currentUser->sendLightUp(newColor);
 	}
+
+	if (isClosed) {
+		closeCurrentConnection();
+	}
+
+	return isClosed;
+}
+
+bool PipeServer::sendLightOut() {
+	bool isClosed = true;
+	if (currentUser != nullptr) {
+		isClosed = currentUser->sendLightOut();
+	}
+
+	if (isClosed) {
+		closeCurrentConnection();
+	}
+
+	return isClosed;
 }
 
 void PipeServer::listen() {
+	printf("Start listening\n");
 	while (isRunning) {
 		hPipeEvent = CreateEvent(NULL, true, false, NULL);
 		if (hPipeEvent == NULL) {
@@ -49,10 +69,12 @@ void PipeServer::listen() {
 		if (connectionStatus == ERROR_IO_PENDING || connectionStatus == ERROR_PIPE_CONNECTED) {
 			WaitForSingleObject(overlap.hEvent, INFINITE);
 			if (isRunning) {
+				printf("Connected\n");
 				queue->enqueue(new PipeConnection(hPipe, overlap));
 			}
 		}
 	}
+	printf("Stop listening\n");
 }
 
 void PipeServer::chooseNextUser() {
@@ -70,4 +92,10 @@ bool PipeServer::isEmpty() {
 void PipeServer::interrupt() {
 	isRunning = false;
 	SetEvent(hPipeEvent);
+}
+
+void PipeServer::closeCurrentConnection() {
+	delete currentUser;
+	queue->dequeue();
+	printf("Disconnected\n");
 }

@@ -3,6 +3,7 @@
 #include "AbstractServer.h"
 #include "ColorGenerator.h"
 #include <thread>
+#include <mutex>
 
 using namespace std;
 
@@ -15,6 +16,7 @@ private:
 	static const DWORD TIMEOUT;
 	AbstractServer* server;
 	ColorGenerator* generator;
+	mutex serverMutex;
 	bool isRunning;
 	void garlandLogic();
 };

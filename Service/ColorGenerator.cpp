@@ -1,13 +1,12 @@
 #include "ColorGenerator.h"
 
-ColorGenerator::ColorGenerator():
-	currentGenerator(nullptr) 
-{
-}
-
 ColorGenerator::ColorGenerator(AbstractColorGenerator *newGenerator) :
 	currentGenerator(newGenerator)
 {
+}
+
+ColorGenerator::~ColorGenerator() {
+	delete currentGenerator;
 }
 
 void ColorGenerator::setGenerator(AbstractColorGenerator* newGenerator) {

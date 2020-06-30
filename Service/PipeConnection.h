@@ -6,8 +6,9 @@
 class PipeConnection : public AbstractConnection {
 public:
 	PipeConnection(HANDLE hPipe, OVERLAPPED overlap);
-	virtual void sendLightUp(RGBColor* newColor);
-	virtual void sendLightOut();
+	~PipeConnection();
+	virtual bool sendLightUp(RGBColor* newColor);
+	virtual bool sendLightOut();
 private:
 	HANDLE hPipe;
 	OVERLAPPED overlap;

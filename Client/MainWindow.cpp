@@ -16,7 +16,7 @@ const TCHAR* MainWindow::WINDOW_CLASS_NAME = TEXT("GarlandWindowClass");
 
 MainWindow::MainWindow(HINSTANCE hInstance):
 	minWidth(DEFAULT_MIN_WIDTH), minHeight(DEFAULT_MIN_HEIGHT), maxWidth(DEFAULT_MAX_WIDTH), 
-	maxHeight(DEFAULT_MAX_HEIGHT), painter(Painter(new RoundLightBulb())), currentColor(nullptr) {
+	maxHeight(DEFAULT_MAX_HEIGHT), painter(Painter(new RoundLightBulb())), currentColor(nullptr), hWnd(reinterpret_cast<HWND>(INVALID_HANDLE_VALUE)) {
 	if (!MainWindow::isRegistered) {
 		registerWindowClass(hInstance);
 	}
@@ -26,7 +26,8 @@ MainWindow::MainWindow(HINSTANCE hInstance):
 }
 
 MainWindow::MainWindow(HINSTANCE hInstance, TCHAR* windowName, int x, int y, int width, int height,
-	int minWidth, int minHeight, int maxWidth, int maxHeight): painter(Painter(new RoundLightBulb())), currentColor(nullptr) {
+	int minWidth, int minHeight, int maxWidth, int maxHeight): painter(Painter(new RoundLightBulb())), 
+	currentColor(nullptr), hWnd(reinterpret_cast<HWND>(INVALID_HANDLE_VALUE)) {
 
 	this->minWidth = (minWidth <= 0 || minWidth > maxWidth) ? DEFAULT_MIN_WIDTH : minWidth;
 	this->minHeight = (minHeight <= 0 || minHeight > maxHeight) ? DEFAULT_MIN_HEIGHT : minHeight;
@@ -46,6 +47,28 @@ MainWindow::MainWindow(HINSTANCE hInstance, TCHAR* windowName, int x, int y, int
 		windowWidth, windowHeight, NULL, NULL, hInstance, this);
 }
 
+void MainWindow::lightUp(RGBColor* newColor) {
+	currentColor = newColor;
+	RECT windowRect;
+	GetClientRect(hWnd, &windowRect);
+	InvalidateRect(hWnd, &windowRect, true);
+}
+
+void MainWindow::lightOut() {
+	currentColor = nullptr;
+	RECT windowRect;
+	GetClientRect(hWnd, &windowRect);
+	InvalidateRect(hWnd, &windowRect, true);
+}
+
+void MainWindow::showError(const TCHAR* message) {
+	MessageBox(hWnd, message, TEXT("Error"), MB_OK | MB_ICONERROR);
+}
+
+void MainWindow::showInfo(const TCHAR* message) {
+	MessageBox(hWnd, message, TEXT("Information"), MB_OK | MB_ICONINFORMATION);
+}
+
 void MainWindow::registerWindowClass(HINSTANCE hInstance) {
 	WNDCLASS windowClass;
 	windowClass.style = CS_GLOBALCLASS;
@@ -62,6 +85,10 @@ void MainWindow::registerWindowClass(HINSTANCE hInstance) {
 	isRegistered = true;
 }
 
+void MainWindow::setHWND(HWND hWnd) {
+	this->hWnd = hWnd;
+}
+
 void MainWindow::onPaint(HWND hWnd) {
 	RECT windowRect;
 	GetClientRect(hWnd, &windowRect);
@@ -75,7 +102,9 @@ LRESULT CALLBACK MainWindow::windowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPA
 	switch (uMsg) {
 	case WM_CREATE: {
 		CREATESTRUCT* createInfo = reinterpret_cast<CREATESTRUCT*>(lParam);
-		SetWindowLongPtr(hWnd, 0, reinterpret_cast<LONG>(createInfo->lpCreateParams));
+		MainWindow* window = reinterpret_cast<MainWindow*>(createInfo->lpCreateParams);
+		window->setHWND(hWnd);
+		SetWindowLongPtr(hWnd, 0, reinterpret_cast<LONG>(window));
 		Painter::initializePainter();
 		break;
 	}

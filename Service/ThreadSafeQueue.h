@@ -16,6 +16,7 @@ public:
 	virtual bool isEmpty();
 	virtual void waitForElement();
 	virtual T getNext();
+//	virtual T getCurrent();
 private:
 	typename list<T>::iterator currentElement;
 	list<T> queue;
@@ -25,14 +26,14 @@ private:
 
 template<class T>
 ThreadSafeQueue<T>::ThreadSafeQueue() {
-	currentElement = queue.end();
+	currentElement = queue.begin();
 }
 
 template<class T>
 void ThreadSafeQueue<T>::enqueue(T newElement) {
 	unique_lock<mutex> queueLock(queueMutex);
-	queueLock.lock();
 	queue.push_back(newElement);
+	currentElement = queue.begin();
 	queueLock.unlock();
 	queueConditionVariable.notify_all();
 }
@@ -40,23 +41,22 @@ void ThreadSafeQueue<T>::enqueue(T newElement) {
 template<class T>
 void ThreadSafeQueue<T>::dequeue() {
 	unique_lock<mutex> queueLock(queueMutex);
-	queueLock.lock();
 	if (queue.empty()) {
 		queueConditionVariable.wait(queueLock);
 	}
+	queue.erase(currentElement);
+	currentElement = queue.begin();
 }
 
 template<class T>
 bool ThreadSafeQueue<T>::isEmpty() {
 	unique_lock<mutex> queueLock(queueMutex);
-	queueLock.lock();
 	return queue.empty();
 }
 
 template<class T>
 void ThreadSafeQueue<T>::waitForElement() {
 	unique_lock<mutex> queueLock(queueMutex);
-	queueLock.lock();
 	if (queue.empty()) {
 		queueConditionVariable.wait(queueLock);
 	}
@@ -65,14 +65,29 @@ void ThreadSafeQueue<T>::waitForElement() {
 template<class T>
 T ThreadSafeQueue<T>::getNext() {
 	unique_lock<mutex> queueLock(queueMutex);
-	queueLock.lock();
 	if (queue.empty()) {
 		queueConditionVariable.wait(queueLock);
 	}
 
+	currentElement++;
 	if (currentElement == queue.end()) {
 		currentElement = queue.begin();
 	}
+//	} else {
+//		currentElement++;
+//	}
 
 	return *currentElement; 
 }
+
+/*
+template<class T>
+T ThreadSafeQueue<T>::getCurrent() {
+	unique_lock<mutex> queueLock(queueMutex);
+	if (queue.empty()) {
+		queueConditionVariable.wait(queueLock);
+	}
+
+	return *currentElement;
+}
+*/

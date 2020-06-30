@@ -1,24 +1,29 @@
 #include "Message.h"
 
-Message::Message():
-	type(lightOut), color(RGBColor(0, 0, 0))
+Message::Message() :
+	type(lightOut) 
 {
 }
 
-Message::Message(RGBColor* color):
-	type(lightUp), color(*color)
+Message::Message(HANDLE newEvent) :
+	type(sendEvent), messageData(newEvent)
 {
 }
 
-RGBColor Message::getColor() {
-	if (type == lightUp) {
-		return color;
-	} else {
-		// TODO: throw Exception
-		return color;
-	}
+Message::Message(RGBColor* newColor) :
+	type(lightUp), messageData(*newColor)
+{
 }
-
+/*
 MessageType Message::getType() {
 	return type;
 }
+
+HANDLE Message::getEvent() {
+	return get<HANDLE>(messageData);
+}
+
+RGBColor Message::getColor() {
+	return get<RGBColor>(messageData);
+}
+*/

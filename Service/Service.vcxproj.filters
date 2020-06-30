@@ -48,9 +48,6 @@
     <ClCompile Include="Garland.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="AbstractServer.cpp">
-      <Filter>Исходные файлы\Server</Filter>
-    </ClCompile>
     <ClCompile Include="PipeServer.cpp">
       <Filter>Исходные файлы\Server</Filter>
     </ClCompile>

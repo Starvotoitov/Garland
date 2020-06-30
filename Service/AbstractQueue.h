@@ -12,4 +12,5 @@ public:
 	virtual bool isEmpty() = 0;
 	virtual void waitForElement() = 0;
 	virtual T getNext() = 0;
+//	virtual T getCurrent() = 0;
 };

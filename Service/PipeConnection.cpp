@@ -6,14 +6,34 @@ PipeConnection::PipeConnection(HANDLE hPipe, OVERLAPPED overlap) :
 {
 }
 
-void PipeConnection::sendLightUp(RGBColor* newColor) {
-	Message* lightUpMessage = new Message(newColor);
-	WriteFile(hPipe, lightUpMessage, sizeof(Message), NULL, &overlap);
-	WaitForSingleObject(overlap.hEvent, INFINITE);
+PipeConnection::~PipeConnection() {
+	DisconnectNamedPipe(hPipe);
+	CloseHandle(hPipe);
+	CloseHandle(overlap.hEvent);
 }
 
-void PipeConnection::sendLightOut() {
+bool PipeConnection::sendLightUp(RGBColor* newColor) {
+	Message* lightUpMessage = new Message(newColor);
+	SetLastError(0);
+	WriteFile(hPipe, lightUpMessage, sizeof(Message), NULL, &overlap);
+	printf("--- Light Up: %d\n", GetLastError());
+	if (GetLastError() == 0) {
+		WaitForSingleObject(overlap.hEvent, INFINITE);
+    	return false;
+	} else {
+		return GetLastError() == ERROR_NO_DATA;
+	}
+}
+
+bool PipeConnection::sendLightOut() {
 	Message* lightOutMessage = new Message();
+	SetLastError(0);
 	WriteFile(hPipe, lightOutMessage, sizeof(Message), NULL, &overlap);
-	WaitForSingleObject(overlap.hEvent, INFINITE);
+	printf("--- Light Out: %d\n", GetLastError());
+	if (GetLastError() == 0) {
+		WaitForSingleObject(overlap.hEvent, INFINITE);
+		return false;
+	} else {
+		return GetLastError() == ERROR_NO_DATA;
+	}
 }
