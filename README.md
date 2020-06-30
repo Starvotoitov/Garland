@@ -10,3 +10,6 @@
 
 
 Для запуска отдельного клиентского приложения необходимо запустить Client.exe.
+
+Пример работы:
+![alt text](https://github.com/Starvotoitov/Garland/blob/master/Garland.gif)
