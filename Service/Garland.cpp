@@ -31,23 +31,20 @@ void Garland::interrupt()
 
 void Garland::garlandLogic()
 {
-//	while (isRunning) {
-		server->waitForClient();
-//		while (!server->isEmpty()) {
-		while (isRunning) {
-			RGBColor* newColor = generator->generateColor();
+	server->waitForClient();
+	while (isRunning) {
+		RGBColor* newColor = generator->generateColor();
 
-			Sleep(TIMEOUT);
-			bool isClosed = false;
-			do {
-				server->chooseNextUser();
-				isClosed = server->sendLightUp(newColor);
-			} while (isClosed);
+		Sleep(TIMEOUT);
+		bool isClosed = false;
+		do {
+			server->chooseNextUser();
+			isClosed = server->sendLightUp(newColor);
+		} while (isClosed);
 
-			delete newColor;
+		delete newColor;
 
-			Sleep(TIMEOUT);
-			server->sendLightOut();
-		}
-//	}
+		Sleep(TIMEOUT);
+		server->sendLightOut();
+	}
 }
